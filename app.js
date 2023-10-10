@@ -12,21 +12,16 @@ function fetchAndCreateProducts() {
   const fakestoreapiUrl = 'https://fakestoreapi.com/products';
   const localServerUrl = 'http://localhost:3000/products';
 
-  // Fetch data from fakestoreapi
   fetch(fakestoreapiUrl)
     .then(response => response.json())
     .then(fakestoreData => {
-      // Map and push fakestoreapi products
       productsArray.push(...fakestoreData.map(product => new Product(product.id, product.title, product.price, product.description, product.image)));
 
-      // Fetch data from the local server
       fetch(localServerUrl)
         .then(response => response.json())
         .then(localServerData => {
-          // Map and push local server products
           productsArray.push(...localServerData.map(product => new Product(product.id, product.title, product.price)));
           
-          // Render all products
           renderProductCards();
         })
         .catch(error => {
@@ -42,7 +37,6 @@ function renderProductCards() {
   const mainSection = document.getElementById('main-section');
 
  
-  // mainSection.innerHTML = '';
 
   productsArray.forEach(product => {
     const card = document.createElement('div');
@@ -88,18 +82,14 @@ function createProduct() {
 
       productsArray.push(new Product(newProduct.id, newProduct.title, newProduct.price));
 
-      // renderProductCards();
     })
     .catch(error => {
       console.error('Error creating product:', error);
     });
 }
 
-// Function to handle the update of a product
 function updateProduct(productId) {
-  // Placeholder for the update functionality
-  // You may need to implement a form for updating the product details
-  // and send a PUT request to the server to update the product
+
 }
 
 function deleteProduct(productId) {
