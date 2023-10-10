@@ -1,3 +1,9 @@
 {
-  "products": []
+  "products": [
+    {
+      "title": "sda",
+      "price": "123",
+      "id": 2
+    }
+  ]
 }
