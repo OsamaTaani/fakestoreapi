@@ -63,7 +63,7 @@ function renderProductCards() {
 function createProduct() {
   const title = document.getElementById('title').value;
   const price = document.getElementById('price').value;
-
+  
   console.log('Submitting form with title:', title, 'and price:', price);
 
   fetch('http://localhost:3000/products', {
@@ -89,6 +89,19 @@ function createProduct() {
 }
 
 function updateProduct(productId) {
+  const updateTitle = prompt("Update the title:","");
+  const updatePrice = prompt("Update the price:", "");
+
+  fetch(`http://localhost:3000/products/${productId}`,{
+    method: 'PUT',
+    headers: {
+      'Content-Type':'application/json',
+    },
+    body: JSON.stringify({title:updateTitle , price:updatePrice}),
+  })
+  .then(() => {
+    fetchAndCreateProducts();
+  })
 
 }
 
